@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 79 70 229;
+    --color-primary-dark: 67 56 202;
+    --color-secondary: 236 72 153;
+    --color-background: 244 247 254;
+    --color-card: 255 255 255;
+  }
+
+  body {
+    @apply bg-background min-h-screen;
+    background-image: 
+      radial-gradient(at 40% 20%, rgb(var(--color-primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgb(var(--color-secondary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgb(var(--color-primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgb(var(--color-secondary) / 0.1) 0px, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-primary/10 text-primary;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 relative;
+    background: linear-gradient(to right, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card {
+    @apply bg-white/80 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 
+           backdrop-blur-sm border border-white/10;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border-b border-white/10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .text-primary {
+    color: rgb(var(--color-primary));
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--color-primary));
+  }
+
+  .bg-primary-dark {
+    background-color: rgb(var(--color-primary-dark));
+  }
+
+  .bg-background {
+    background-color: rgb(var(--color-background));
+  }
+
+  .bg-card {
+    background-color: rgb(var(--color-card));
+  }
+
+  .hover\:bg-primary-dark:hover {
+    background-color: rgb(var(--color-primary-dark));
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+} 
