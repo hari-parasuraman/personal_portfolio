@@ -1,3 +1,6 @@
+// Test preview deployment
+// This is a temporary change to verify preview deployments are working
+
 import { Metadata } from 'next'
 import Image from 'next/image';
 import Link from 'next/link';
