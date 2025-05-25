@@ -43,7 +43,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 glass-effect shadow-sm z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-xl font-bold text-primary">
+            <Link href="/" className="text-xl font-bold text-gradient">
               HP
             </Link>
             <nav className="space-x-6">
@@ -64,16 +64,16 @@ export default function Home() {
       <div className="container mx-auto px-4 pt-20">
         {/* Hero Section */}
         <section className="py-20 text-center">
-          <p className="text-lg text-gray-600 mb-4">Hey there! My name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <p className="text-lg text-gray-600 mb-4 animate-float">Hey there! My name is</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-gradient">
             HARIHARAN
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">or you can call me</p>
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 animate-float">or you can call me</p>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-gradient">
             HARI
           </h2>
           <div className="max-w-2xl mx-auto">
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 mb-8 animate-float">
               I am a Full Stack Developer,<br />
               passionate about creating beautiful web applications,<br />
               and turning complex problems into simple solutions<br />
@@ -85,16 +85,18 @@ export default function Home() {
         {/* About */}
         <section id="about" className="py-16">
           <h2 className="section-heading text-center mb-8">Welcome to my digital world!</h2>
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg text-gray-600 mb-6">
-              Since I started my journey in web development, I've discovered a whole new world 
-              and met many awesome people along the way. Some became friends, some became mentors, 
-              and some I had the pleasure to mentor.
-            </p>
-            <p className="text-lg text-gray-600">
-              It's become an exciting chapter in my life's story, and I'm working hard to make it 
-              beautiful and meaningful.
-            </p>
+          <div className="max-w-2xl mx-auto">
+            <div className="card text-center hover:scale-up">
+              <p className="text-lg text-gray-600 mb-6">
+                Since I started my journey in web development, I've discovered a whole new world 
+                and met many awesome people along the way. Some became friends, some became mentors, 
+                and some I had the pleasure to mentor.
+              </p>
+              <p className="text-lg text-gray-600">
+                It's become an exciting chapter in my life's story, and I'm working hard to make it 
+                beautiful and meaningful.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -103,15 +105,15 @@ export default function Home() {
           <h2 className="section-heading text-center mb-12">My Toolbox</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {skills.map((category) => (
-              <div key={category.category} className="card">
-                <h3 className="text-xl font-semibold mb-4 text-primary">
+              <div key={category.category} className="card hover:scale-up">
+                <h3 className="text-xl font-semibold mb-4 text-gradient">
                   {category.category}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {category.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 bg-gray-100 rounded-full text-gray-600"
+                      className="skill-tag"
                     >
                       {skill}
                     </span>
@@ -127,8 +129,8 @@ export default function Home() {
           <h2 className="section-heading text-center mb-12">Featured Work</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {projects.map((project) => (
-              <article key={project.title} className="card group">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+              <article key={project.title} className="card hover:scale-up">
+                <h3 className="text-xl font-semibold mb-2 text-gradient">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
@@ -136,7 +138,7 @@ export default function Home() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-full"
+                      className="skill-tag"
                     >
                       {tech}
                     </span>
@@ -146,7 +148,7 @@ export default function Home() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
+                  className="project-link"
                 >
                   View Project →
                 </a>
@@ -158,32 +160,34 @@ export default function Home() {
         {/* Contact */}
         <section id="contact" className="py-16">
           <h2 className="section-heading text-center mb-8">Let's Connect</h2>
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-lg text-gray-600 mb-8">
-              I'm always excited to collaborate on interesting projects and meet fellow developers.
-              Feel free to reach out!
-            </p>
-            <a
-              href="mailto:hariharan.parasuraman@example.com"
-              className="inline-block px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors mb-8"
-            >
-              Say Hello
-            </a>
-            <div className="flex justify-center space-x-8">
-              {[
-                { name: 'GitHub', url: 'https://github.com/hariparasuraman' },
-                { name: 'LinkedIn', url: 'https://linkedin.com/in/hariparasuraman' },
-              ].map((link) => (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-primary transition-colors text-lg"
-                >
-                  {link.name}
-                </a>
-              ))}
+          <div className="max-w-2xl mx-auto">
+            <div className="card text-center hover:scale-up">
+              <p className="text-lg text-gray-600 mb-8">
+                I'm always excited to collaborate on interesting projects and meet fellow developers.
+                Feel free to reach out!
+              </p>
+              <a
+                href="mailto:hariharan.parasuraman@example.com"
+                className="inline-block px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                Say Hello
+              </a>
+              <div className="flex justify-center space-x-8 mt-8">
+                {[
+                  { name: 'GitHub', url: 'https://github.com/hariparasuraman' },
+                  { name: 'LinkedIn', url: 'https://linkedin.com/in/hariparasuraman' },
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-primary transition-all duration-300 hover:scale-110"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>

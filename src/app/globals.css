@@ -14,10 +14,10 @@
   body {
     @apply bg-background min-h-screen;
     background-image: 
-      radial-gradient(at 40% 20%, rgb(var(--color-primary) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, rgb(var(--color-secondary) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, rgb(var(--color-primary) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgb(var(--color-secondary) / 0.1) 0px, transparent 50%);
+      radial-gradient(at 40% 20%, rgb(var(--color-primary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgb(var(--color-secondary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgb(var(--color-primary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgb(var(--color-secondary) / 0.15) 0px, transparent 50%);
   }
 
   html {
@@ -31,25 +31,50 @@
 
 @layer components {
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-gray-900 relative;
+    @apply text-3xl md:text-4xl font-bold text-gray-900 relative inline-block;
     background: linear-gradient(to right, rgb(var(--color-primary)), rgb(var(--color-secondary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+    background-size: 200% auto;
   }
 
   .card {
-    @apply bg-white/80 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 
-           backdrop-blur-sm border border-white/10;
+    @apply bg-white/80 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
+           backdrop-blur-sm border border-white/20 hover:border-white/40 hover:scale-[1.02];
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.6)
+    );
   }
 
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border-b border-white/10;
+    @apply bg-white/90 backdrop-blur-md border-b border-white/20 shadow-sm;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.8)
+    );
+  }
+
+  .skill-tag {
+    @apply px-4 py-2 bg-white/50 rounded-full text-gray-600 backdrop-blur-sm
+           border border-white/20 hover:border-white/40 transition-all duration-300
+           hover:shadow-md hover:scale-105 hover:bg-white/70;
+  }
+
+  .project-link {
+    @apply inline-flex items-center text-primary hover:text-primary-dark transition-all
+           duration-300 hover:translate-x-1;
   }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient 8s ease infinite;
   }
 
   .text-primary {
@@ -88,7 +113,23 @@
     }
   }
 
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   .animate-float {
     animation: float 4s ease-in-out infinite;
+  }
+
+  .hover\:scale-up {
+    @apply transition-transform duration-300 hover:scale-105;
   }
 } 
