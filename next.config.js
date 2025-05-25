@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  output: 'export',  // Enable static exports
   images: {
+    unoptimized: true,  // Required for static export
     domains: ['github.com', 'linkedin.com'], // Add any external image domains you might use
   },
   poweredByHeader: false,
